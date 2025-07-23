@@ -1,21 +1,53 @@
 #include <stdio.h>
 
-int main() {
-    char nameX;
-    int ageX;
-    float heightX;
-    char weightX;
-    char gradecharX;
-    
-    char nameY;
-    int ageY;
-    float heightY;
-    char weightY;
-    char gradecharY;
+// สร้างโครงสร้างข้อมูล struct
+struct Person {                                    // เป็นการกำหนดโครงสร้างข้อมูลที่ชื่อว่า Person สำหรับเก็บข้อมูลของ "บุคคล" 1 คน
+    char name;                                      // กำหนดตัวแปร เป็นชื่ออังกฤษตัวแรก 
+    int age;                                       // กำหนดตัวแปร อายุให้เป็นค่าจำนวนเต็ม
+    float height;                                 // กำหนดตัวแปร ความสูงให้เป็นทศนิยม
+    float weight;                                // กำหนดตัวแปร น้ำหนักให้เป็นทศนิยม
+    char grade;                                 // กำหนดตัวแปร แทนเกรดอังกฤษตัวแรก
+};
 
-   char nameZ;
-    int ageZ;
-    float heightZ;
-    char weightZ;
-    char gradecharZ;
+int main() {
+    struct Person people[3]; //สร้างเเอเรียให้กับบุคคลทั้ง 3 คนให้อยู่ในแอเรียเดียวกัน
+
+    printf("=== รับข้อมูลจำนวน 3 คน ===\n"); //แสดงข้อมูลให้ป้อน ข้อมูลทั้ง3 คน
+    printf("ป้อนข้อมูลรูปแบบ: ชื่อเล่น อายุ ส่วนสูง น้ำหนัก รหัสเกรด\n"); //แสดงให้ป้อนข้อมูล ชื่อ อายุ ส่วนสูง น้ำหนัก เกรดตัวอักษร
+    printf("ตัวอย่าง: A 21 175.5 90.2 A\n\n");//แสดงตัวอย่างการป้อนข้อมูล
+
+    // รับข้อมูลของแต่ละคน
+    for (int i = 0; i < 3; i++) { //ใช้ for loop เพื่อรับข้อมูล 3 คน (จาก 0 ถึง 2)
+        printf("ป้อนข้อมูลคนที่ %d: ", i + 1);//แสดงข้อมูลของคนที่ 1 , 2, 3
+        
+        scanf(" %c %d %f %f %c",//กำหนดให้ตัวแปรแต่ละตัวแสดงว่าเป็นแบบที่กำหนด
+              
+            // ให้อ่านโดยแสดงผลเป็ฯค่าที่กำหนด 
+              &people[i].name,
+              &people[i].age,
+              &people[i].height,
+              &people[i].weight,
+              &people[i].grade);
+    }
+
+    
+    // แสดงหัวข้อในรูปแบบตารางให้ดูสวยงาม
+    printf("\n+-------+-----+-----------+-----------+------------+\n");
+    printf("| Name  | Age | Height(cm)| Weight(kg)| Grade Code |\n");
+    printf("+-------+-----+-----------+-----------+------------+\n");
+
+    for (int i = 0; i < 3; i++) {
+        
+        //ใช้จัดช่องข้อมูลให้อยู่ตรงกลางตาราง 
+        printf("|   %c   | %3d |   %6.1f  |   %6.1f  |     %c      |\n",
+               people[i].name,
+               people[i].age,
+               people[i].height,
+               people[i].weight,
+               people[i].grade);
+    }
+
+    printf("+-------+-----+-----------+-----------+------------+\n");//ปิดท้ายตาราง
+
+    return 0;//จบการทำงาน
 }
